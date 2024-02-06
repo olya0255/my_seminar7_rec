@@ -1,21 +1,29 @@
-﻿// Задайте произвольный массив. 
-// Выведете его элементы, начиная с конца. 
-// Использовать рекурсию, не использовать циклы.
+﻿// Задача 1: Задайте значения M и N. 
+// Напишите программу, которая выведет все натуральные числа 
+// в промежутке от M до N. Использовать рекурсию, 
+// не использовать циклы.
 
 // Пример
-// [1, 2, 5, 0, 10, 34] => 34 10 0 5 2 1
+// M = 1; N = 5 -> "1, 2, 3, 4, 5"
+// M = 4; N = 8 -> "4, 5, 6, 7, 8"
 
- int [] array = CreateArray(1, 2, 5, 0, 10, 34);
+int m = InputNumbers("Введите m: ");
+int n = InputNumbers("Введите n: ");
 
- int rows = array.GetLength(0);
- int cols = array.GetLength(1);
- string output = "";
- for (int i = 0; i < rows; i++)
- {
-    for (int j = 0; j < cols; j++)
-    {
-       output += array[array i, j] + " ";
-    }
-    System.Console.WriteLine($"[ {output}]");
-    output = "";
- }
+int functionAkkerman = Ack(m, n);
+
+Console.Write($"Функция Аккермана = {functionAkkerman} ");
+
+int Ack(int m, int n)
+{
+    if (m== 0) return n + 1;
+    else if (n == 0) return Ack(m - 1, 1);
+    else return Ack(m - 1, Ack(m, n - 1));    
+}
+
+int InputNumbers(string input)
+{
+    Console.Write(input);
+    int output = Convert.ToInt32(Console.ReadLine());
+    return output;
+}
